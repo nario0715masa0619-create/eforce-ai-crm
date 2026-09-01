@@ -16,6 +16,8 @@ Node.jsはLTS版、package managerはpnpmを第一候補とします。CIでは 
 
 人間ハブ型コピペ運用を避け、GitHub Issue／PR／docs／Actionsを正本にします。AIはIssue／PRを読んで作業・レビューし、ChatGPTには最小サマリーだけを渡します。人間は承認と重要判断に集中し、Webhook／Bot／MCPは将来候補として整理します。
 
+LuviraMemoryはREAD限定の補助ContextでありProject Canonical Stateより優先しません。HermesAgent／Webhook／Bot／MCPは将来検証候補です。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。

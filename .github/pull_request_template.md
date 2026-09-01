@@ -51,6 +51,9 @@
 - ui-reviewer確認:
 - ChatGPT判断要否:
 - 人間承認要否:
+- LuviraMemory参照有無:
+- LuviraMemory参照範囲:
+- [ ] LuviraMemoryへのWRITEなし
 
 ## 自動チェック想定
 
@@ -59,6 +62,7 @@
 - [ ] secrets混入チェック
 - [ ] 実データ混入チェック
 - [ ] 禁止ファイルチェック
+- [ ] memory-authorityチェック
 
 ## ChatGPT共有用サマリー
 

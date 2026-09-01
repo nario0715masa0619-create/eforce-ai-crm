@@ -45,6 +45,9 @@ Issueを作業指示の正本とする。
 - security-reviewer確認要否:
 - ui-reviewer確認要否:
 - ChatGPT判断要否:
+- LuviraMemory参照要否:
+- LuviraMemory参照範囲:
+- LuviraMemoryはREAD限定か: はい
 - PR作成必須: はい
 
 ## ChatGPT共有用サマリー

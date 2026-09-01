@@ -9,3 +9,4 @@
 | 2026-09-01 | Phase 0.5 方針 | 本体設計より先にPhase 0.5開発環境整備を行う方針へ修正。Issue #1はPhase 0.5完了後に着手し、開発環境・CI・ブランチ運用・検証手順の整備Issueを作成。本体設計・本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.5 レビュー対応 | Claude CodeレビューのPASS with concernsを受け、Node.js、pnpm、CI、環境分離、GitHub保護設定、ダミーデータ方針を明文化。最小アプリ雛形、CI実装、依存関係導入、本体設計・本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.6 方針 | 人間ハブ型コピペ運用を避けるため、GitHub Issue／PR／docs／Actions／ラベルと将来のWebhook・Bot・MCP候補によるLevel 3半自動オーケストレーションを整理。ChatGPT共有を最小サマリー化。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
+| 2026-09-01 | Memory方針 | LuviraMemoryをREAD限定の補助Contextとし、GitHub正本・直接WRITE禁止・HermesAgent将来検証候補を明文化。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
