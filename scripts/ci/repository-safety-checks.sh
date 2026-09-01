@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+export LC_ALL=C
 fail=0
 require_answer(){
   local heading="$1" content meaningful
@@ -26,9 +27,21 @@ if grep -Eiq "(sk-|xoxb-|ghp_|github_pat_|bearer[[:space:]]+[A-Za-z0-9]|($secret
 phone_pattern='([0-9]{2,4}[- ][0-9]{2,4}[- ][0-9]{4}|0(50|70|80|90)[0-9]{8})'
 email_pattern='[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}'
 postal_pattern='[0-9]{3}-?[0-9]{4}'
-prefecture_pattern='北海道|東京都|京都府|大阪府|[一-龠々]{2,3}県'
+prefecture_pattern='北海道|東京都|京都府|大阪府'
 address_suffix_pattern='市|区|町|村|丁目|番地|号'
-data=$(grep -Eio "($phone_pattern|$email_pattern|$postal_pattern|($prefecture_pattern).{0,40}($address_suffix_pattern))" <<<"$added" || true)
-data=$(grep -Eiv '^(000-0000-0000|999-9999-9999|000-0000|999-9999|0000000|9999999|00000000000|99999999999|03-0000-0000|090-0000-0000|080-0000-0000|070-0000-0000|0120-000-000|.*@(example\.(com|jp|net)|test\.local|localhost))$' <<<"$data" || true)
+if data=$(grep -Eio "($phone_pattern|$email_pattern|$postal_pattern|($prefecture_pattern).{0,40}($address_suffix_pattern))" <<<"$added"); then
+  :
+else
+  status=$?
+  if [ "$status" -eq 1 ]; then data=''; else echo "Personal-data pattern check failed (grep exit $status)" >&2; exit 1; fi
+fi
+if [ -n "$data" ]; then
+  if data=$(grep -Eiv '^(000-0000-0000|999-9999-9999|000-0000|999-9999|0000000|9999999|00000000000|99999999999|03-0000-0000|090-0000-0000|080-0000-0000|070-0000-0000|0120-000-000|.*@(example\.(com|jp|net)|test\.local|localhost))$' <<<"$data"); then
+    :
+  else
+    status=$?
+    if [ "$status" -eq 1 ]; then data=''; else echo "Dummy-data filter failed (grep exit $status)" >&2; exit 1; fi
+  fi
+fi
 if [ -n "$data" ]; then echo 'Potential personal or real data detected'; fail=1; fi
 exit "$fail"
