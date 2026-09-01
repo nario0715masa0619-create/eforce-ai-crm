@@ -32,6 +32,10 @@ Phase 0.8-Bはこの汎用安全ゲートを最小調整する作業であり、
 
 自己検出回避のため、`scripts/ci/repository-safety-checks.sh` の内容差分は同スクリプトの内容スキャンから除外します。この限界を補うため、当該スクリプトを変更するPRではcode-reviewerによる差分確認を必須とします。
 
+## Phase 0.9: 自律開発運用環境整備
+
+Phase 0.9は、本体着手前にIssue / Branch / PR / CI / Review / Handoff / Recovery / Human Approvalを一体で運用するための文書・運用整備です。業務アプリ本体はまだ未着手です。Phase 1の開始前には、[Phase 1開始ゲート](docs/17_phase1_start_gate.md)を確認します。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。
@@ -55,6 +59,9 @@ process-compliance-monitorは、Issue／PR／approved-for-work／Handoff／docs�
 - [韓国旅行期間中の自律開発方針](docs/08_korea_trip_dev_policy.md)
 - [受入基準](docs/09_acceptance_criteria.md)
 - [実装開始ゲート](docs/11_implementation_start_gate.md)
+- [自律開発運用環境](docs/15_autonomous_development_operating_environment.md)
+- [GitHubリポジトリ制御項目](docs/16_github_repository_controls.md)
+- [Phase 1開始ゲート](docs/17_phase1_start_gate.md)
 - [AIガバナンス](ai-governance/)
 
 ## 開発上の禁止事項
