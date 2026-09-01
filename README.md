@@ -24,6 +24,10 @@ AI停止・クレジット切れ時はGitHubを正本、Mem0を機微情報を�
 
 最初の自動化範囲、停止条件、人間承認を定義します。優先候補はラベル、PR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-work、changelog、大差分、CI確認です。詳細は [最小自動化範囲](docs/14_level3_minimum_automation_scope.md)。Actions、Bot／Webhook／MCP、Memory接続、HermesAgent、雛形、本体設計・実装はまだ行いません。
 
+## Phase 0.8
+
+PR時にrepository-safety-checksが本文、禁止ファイル、secrets、実データを検査します。検出時はマージせずsecurity-reviewerまたは人間判断へ戻します。Actionは検査のみです。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。
