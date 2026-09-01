@@ -61,3 +61,7 @@ GitHub上で可能な範囲で、mainブランチ保護、Pull Request必須、C
 本体設計・実装前にIssue／PR／docs／Actionsを中心とする半自動運用を整備する。ラベルと状態遷移で作業状態を管理し、`approved-for-work` なしにAIは作業せず、PRなしにレビューしない。ChatGPTはURL、commit、最小要約で判断し、チャット本文を正本にしない。詳細は `docs/13_ai_orchestration_level3.md` を参照する。
 
 GitHub docsを正本とし、LuviraMemoryはREAD限定の補助Contextであり正本代替にしない。詳細は `docs/13_level3_orchestration_policy.md` を参照する。
+
+## AI Failover / Handoff
+
+AI停止・クレジット切れを前提に、GitHubを正本、Mem0を補助作業メモリとして引継ぎ情報を残す。引継ぎAIは未完了範囲だけを扱い、不明ならblockedとする。本番、破壊的変更、秘密情報、実データを勝手に扱わない。

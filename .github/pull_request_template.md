@@ -74,3 +74,14 @@
 - Blocking issues:
 - Non-blocking concerns:
 - ChatGPTに判断してほしいこと:
+
+## Handoff Summary
+
+- Issue URL / PR URL / branch / latest commit hash / current status:
+- completed work / remaining work / changed files / validation results:
+- blocking issues / non-blocking concerns / next recommended action / do-not-touch scope:
+
+## Failover確認
+
+- [ ] GitHub上に正本情報がある
+- [ ] Mem0は許可された補助情報のみで、秘密情報・実データ・個人情報を含まない

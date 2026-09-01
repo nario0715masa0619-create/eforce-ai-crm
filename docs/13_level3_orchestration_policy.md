@@ -21,3 +21,13 @@ HermesAgentは採用前提でなく将来検証候補とする。GitHub Issue／
 種別: `type:docs type:design type:implementation type:review type:security type:ui type:infra type:ci type:bug type:orchestration`。状態: `status:draft → status:needs-human-approval → status:approved-for-work → status:in-progress → status:ready-for-review → status:ready-for-human → status:approved → status:done`。差戻しは `ready-for-review → changes-requested → in-progress`、停止は任意状態から`blocked`。AI: `ai:codex ai:claude-code ai:chatgpt ai:project-governor ai:security-reviewer ai:ui-reviewer ai:documentation-manager`。リスク: `risk:scope risk:security risk:secrets risk:data risk:db risk:external-integration risk:production risk:ui risk:ai-output risk:memory-authority`。
 
 AIはIssue、対象・対象外、完了条件、レビュー担当、`approved-for-work`、必要な開始ゲート、Memory READ明記が揃うまで開始しない。PRはdraft→review→changes-requested/ready-for-human→approved→mergedで運用する。将来Actionsはlint/typecheck/test/build、PR本文、禁止ファイル、DB・認証・ストレージ・AI・Google・UI・本番・secrets・Memory authorityリスク検出を扱う。Webhook／Bot／MCPはラベル、CI差戻し、レビュー要求、要約、Issue/PR/CI取得を将来候補とし、今回実装しない。
+
+## AI Failover / Credit Exhaustion Handoff
+
+担当AIは交換可能であり、クレジット切れ、上限、エラー、応答停止、PR途中停止を前提にする。GitHubを正本、Mem0を補助共有作業メモリとし、Mem0は仕様・承認ログ・Canonical Stateにしない。引継ぎAIはMem0で状況把握後、GitHubで確認し、迷えば`blocked`または`needs-human-approval`にする。
+
+GitHubにはIssue/PR URL、branch、commit、PR本文、CI・レビュー、Blocking/Non-blocking、未対応、承認ログを残す。Mem0にはフェーズ、URL、branch、commit、状態、完了/未完了、検証、論点、最初に読むファイル、触れない範囲、次アクションだけを残す。APIキー、認証、顧客実データ・個人情報、録音・写真、契約原文、正式承認ログ、Canonical代替は残さない。
+
+状態は`normal → ai-paused / ai-credit-exhausted / ai-error → handoff-needed → handoff-accepted → in-progress → ready-for-review`。判断不能は`handoff-needed → blocked`、人間承認待ちは`needs-human-approval`。ラベルは`status:handoff-needed` `status:handoff-accepted` `status:ai-paused` `status:ai-credit-exhausted` `status:ai-error` `risk:handoff` `risk:context-loss`を追加する。
+
+開始時と区切りごとに対象・対象外、検証、変更、完了/未完了、論点、次作業をMem0へ（未利用時はPR/Issueへ）記録する。停止時はIssue/PR、branch、commit、状態、変更、検証、論点、次アクション、触れない範囲をSummaryとして残す。突然停止時はIssue、PR差分、commit、CI、change log、Mem0の順に復元し、不明なら停止する。引継ぎAIは未承認作業、仕様変更、破壊的DB、本番、秘密情報変更、実データ投入、Mem0単独の不可逆操作、承認代行をしない。

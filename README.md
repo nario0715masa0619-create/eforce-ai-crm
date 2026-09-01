@@ -18,6 +18,8 @@ Node.jsはLTS版、package managerはpnpmを第一候補とします。CIでは 
 
 LuviraMemoryはREAD限定の補助ContextでありProject Canonical Stateより優先しません。HermesAgent／Webhook／Bot／MCPは将来検証候補です。
 
+AI停止・クレジット切れ時はGitHubを正本、Mem0を機微情報を含めない補助作業メモリとして別AIへ引継ぎます。引継ぎAIはGitHubを確認してから作業します。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。
