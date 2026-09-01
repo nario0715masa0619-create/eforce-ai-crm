@@ -15,3 +15,4 @@
 | 2026-09-01 | Phase 0.8 安全チェック | Level 3最小自動化の第一弾としてPR本文、禁止ファイル、secrets、実データ検査をGitHub Actionsで実行する方針を追加。`.github/workflows/repository-safety-checks.yml` と `scripts/ci/repository-safety-checks.sh` を作成。自動ラベル・コメント・マージ・本番・Mem0・Bot/Webhook/MCP・本体実装は未実施。実PRでのAction実行確認は次レビュー対象。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | 運用逸脱 | Phase 0.8-BでIssue・テストPR未作成のまま一部修正をmainへ直接反映。Issue単位ブランチ・PR方針からの逸脱として記録し、残作業はIssue #5とPRで実施する。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Process監視 | Phase 0.8-Bの運用逸脱と時間上限到達後の未コミット状態を受け、Issue／PR／承認／Handoff／docs／完了条件を監視するprocess-compliance-monitorを追加。project-governorとは別役割。本体実装・Actions・Memory接続は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
+| 2026-09-01 | Process監視レビュー対応 | PR #7レビューを受け、recovery neededと実行結果の記録場所を明確化。Issue #6／PR #7は専用スコープで、レビュー担当はproject-governor・security-reviewer・code-reviewer。approved-for-workは未付与のため人間承認または確認後にマージする。Phase 0.8-B残作業は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
