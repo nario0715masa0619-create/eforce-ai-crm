@@ -36,6 +36,8 @@ PR時にrepository-safety-checksが本文、禁止ファイル、secrets、実�
 
 作業は1タスク単位で実施し、実装者以外が差分・セキュリティ・UI・仕様範囲を確認します。仕様にない内容は実装せず、人間に確認します。本番反映は必ず人間承認を必要とします。
 
+process-compliance-monitorは、Issue／PR／approved-for-work／Handoff／docs／change log／完了条件を確認し、main直コミットやIssueなし作業を検出するプロセス遵守レビュー役です。本体実装や仕様判断は行いません。
+
 ## 主な資料
 
 - [プロジェクト概要](docs/00_project_overview.md)
