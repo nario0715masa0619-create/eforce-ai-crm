@@ -21,9 +21,11 @@
 - [画面構成確認書](docs/02_screen_confirmation.md)
 - [重要前提](docs/04_important_assumptions.md)
 - [セキュリティ方針](docs/05_security_policy.md)
+- [韓国旅行期間中の自律開発方針](docs/08_korea_trip_dev_policy.md)
 - [受入基準](docs/09_acceptance_criteria.md)
+- [実装開始ゲート](docs/11_implementation_start_gate.md)
 - [AIガバナンス](ai-governance/)
 
 ## 開発上の禁止事項
 
-仕様外機能の追加、APIキー・秘密情報の変更、顧客／実データの投入、破壊的DB変更、本番反映を許可なく行いません。
+本体実装開始前に、実装開始ゲートで人間承認を記録します。2026年11月11日〜11月18日の韓国旅行期間中は、デバッグ、テスト、レビュー、軽微修正、文書整理に限定します。仕様外機能の追加、APIキー・秘密情報の変更、顧客／実データの投入、破壊的DB変更、本番反映を許可なく行いません。本番反映は人間承認なしに行わないことを徹底します。
