@@ -24,9 +24,13 @@ AI停止・クレジット切れ時はGitHubを正本、Mem0を機微情報を�
 
 最初の自動化範囲、停止条件、人間承認を定義します。優先候補はラベル、PR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-work、changelog、大差分、CI確認です。詳細は [最小自動化範囲](docs/14_level3_minimum_automation_scope.md)。Actions、Bot／Webhook／MCP、Memory接続、HermesAgent、雛形、本体設計・実装はまだ行いません。
 
-## Phase 0.8
+## Phase 0.8: 汎用安全チェック
 
-PR時にrepository-safety-checksが本文、禁止ファイル、secrets、実データを検査します。検出時はマージせずsecurity-reviewerまたは人間判断へ戻します。Actionは検査のみです。
+repository-safety-checksは、PR本文、禁止ファイル、secrets／token／keyらしき値、一般的な個人情報・実データらしき値の混入を確認する、開発環境整備の初期安全ゲートです。明示的なダミーデータは許容します。検出時はマージせずsecurity-reviewerまたは人間判断へ戻します。Actionは検査のみです。
+
+Phase 0.8-Bはこの汎用安全ゲートを最小調整する作業であり、E-force様業務アプリ本体の仕様・設計・実装ではありません。業務ドメイン固有の検査は行わず、このチェックは人間レビュー、security-reviewer、code-reviewer、process-compliance-monitorを代替しません。
+
+自己検出回避のため、`scripts/ci/repository-safety-checks.sh` の内容差分は同スクリプトの内容スキャンから除外します。この限界を補うため、当該スクリプトを変更するPRではcode-reviewerによる差分確認を必須とします。
 
 ## 重要前提
 

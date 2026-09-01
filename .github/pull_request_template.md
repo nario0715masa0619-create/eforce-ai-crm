@@ -1,8 +1,16 @@
 ## 概要
 
-## 変更内容
+## 対象Issue
 
-## 関連Issue
+## 実施内容
+
+## 変更ファイル
+
+## 検証コマンド
+
+## 懸念点
+
+## 対象外
 
 ## 仕様書との関係
 
@@ -10,25 +18,21 @@
 
 - [ ] 確認済み
 
-## 対象外機能を追加していないこと
-
-- [ ] 確認済み
-
 ## 旅行期間中の禁止作業に該当していないか
 
 - [ ] 確認済み／対象期間外
 
-## 本番反映を含んでいないか
+## 本番反映
 
-- [ ] 含んでいない
+- [ ]
 
-## APIキー・秘密情報を変更していないか
+## secrets変更
 
-- [ ] 変更していない
+- [ ]
 
-## 顧客データ・実データを投入していないか
+## 実データ使用
 
-- [ ] 投入していない
+- [ ]
 
 ## テスト結果
 
@@ -77,9 +81,7 @@
 
 ## Handoff Summary
 
-- Issue URL / PR URL / branch / latest commit hash / current status:
-- completed work / remaining work / changed files / validation results:
-- blocking issues / non-blocking concerns / next recommended action / do-not-touch scope:
+- [ ]
 
 ## Failover確認
 
