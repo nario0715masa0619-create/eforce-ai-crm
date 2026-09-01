@@ -5,12 +5,26 @@
 | 領域 | 第一候補 | 方針 |
 | --- | --- | --- |
 | Webアプリ | Next.js | Webシステムとして構成する候補 |
+| package manager | pnpm | Node.js依存関係を一貫して管理する第一候補 |
+| Node.js | LTS版 | 具体バージョンは次工程で明記する |
 | 配置先 | Vercel | クラウド実行環境の候補 |
 | DB | Supabase Postgres | 顧客・案件等の保管候補。DB設計はPhase 0.5対象外 |
 | 認証 | Supabase Auth | 基本的なログイン管理の候補。認証実装は対象外 |
 | ファイル保存 | Supabase Storage | 写真・録音音声の非公開保管候補。実装は対象外 |
 | AI処理 | OpenAI等のAPI | 文字起こし・抽出・要約の候補。AI処理実装は対象外 |
 | 重い音声処理 | Cloud Run等への分離 | 必要になった場合に分離可能な設計候補 |
+
+| CI | GitHub Actions | lint、typecheck、test、buildを確認する候補 |
+
+## 現時点でまだ実施しないこと
+
+- Next.js最小アプリ雛形、`package.json`、`pnpm-lock.yaml`、GitHub Actionsファイルの作成
+- Supabase、Vercel、OpenAI API、GoogleカレンダーAPIへの接続
+- Cloud Run構築
+
+## 次工程で実施すること
+
+次工程「Phase 0.5: 最小アプリ雛形・CI・検証手順を実装する」で、Next.js最小アプリ、Node.jsバージョンの明記、pnpm採用、`.env.example`、lint／typecheck／test／buildコマンド、GitHub Actions CI、READMEの起動・検証手順、サンプルページ程度の起動確認を扱う。
 
 ## 選定時の条件
 
