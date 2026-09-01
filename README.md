@@ -6,6 +6,10 @@
 
 録音音声を手動アップロードして行うAI文字起こし・情報抽出・要約、顧客／案件管理、訪問予定・訪問後報告、写真添付、Googleカレンダーへの一方向登録です。AI候補は必ず担当者が確認・修正・承認して登録します。
 
+## Phase 0.5：開発環境整備
+
+本体設計・本体実装の前に、開発環境、CI、ブランチ／PR運用、検証手順、secrets管理を整備します。Issue #1はPhase 0.5完了後に着手し、AI自律開発は開発環境と検証手順が整ってから開始します。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。
@@ -21,6 +25,8 @@
 - [画面構成確認書](docs/02_screen_confirmation.md)
 - [重要前提](docs/04_important_assumptions.md)
 - [セキュリティ方針](docs/05_security_policy.md)
+- [開発方針（Phase 0.5）](docs/06_development_policy.md)
+- [技術スタック候補](docs/12_technical_stack.md)
 - [韓国旅行期間中の自律開発方針](docs/08_korea_trip_dev_policy.md)
 - [受入基準](docs/09_acceptance_criteria.md)
 - [実装開始ゲート](docs/11_implementation_start_gate.md)
