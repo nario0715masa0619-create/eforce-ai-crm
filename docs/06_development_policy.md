@@ -55,3 +55,7 @@ mainへの直接コミットは原則禁止とし、作業はIssue単位でブ�
 ## GitHub保護設定方針
 
 GitHub上で可能な範囲で、mainブランチ保護、Pull Request必須、CI通過必須、直接push制限、レビュー必須、force push禁止、branch削除制限を人間が確認・設定する。GitHub設定の変更は人間承認事項であり、AIが勝手に変更しない。
+
+## Phase 0.6 Level 3オーケストレーション
+
+本体設計・実装前にIssue／PR／docs／Actionsを中心とする半自動運用を整備する。ラベルと状態遷移で作業状態を管理し、`approved-for-work` なしにAIは作業せず、PRなしにレビューしない。ChatGPTはURL、commit、最小要約で判断し、チャット本文を正本にしない。詳細は `docs/13_ai_orchestration_level3.md` を参照する。

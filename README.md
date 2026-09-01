@@ -12,6 +12,10 @@
 
 Node.jsはLTS版、package managerはpnpmを第一候補とします。CIでは lint / typecheck / test / build を確認し、local / staging / productionを分離します。開発・テストに顧客データ・実データは使用しません。mainへの直接コミットは原則禁止し、Issue単位ブランチとPRレビューを行います。GitHubブランチ保護・必須レビュー設定は人間が確認・設定します。
 
+## Phase 0.6：Level 3オーケストレーション
+
+人間ハブ型コピペ運用を避け、GitHub Issue／PR／docs／Actionsを正本にします。AIはIssue／PRを読んで作業・レビューし、ChatGPTには最小サマリーだけを渡します。人間は承認と重要判断に集中し、Webhook／Bot／MCPは将来候補として整理します。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。
@@ -29,6 +33,7 @@ Node.jsはLTS版、package managerはpnpmを第一候補とします。CIでは 
 - [セキュリティ方針](docs/05_security_policy.md)
 - [開発方針（Phase 0.5）](docs/06_development_policy.md)
 - [技術スタック候補](docs/12_technical_stack.md)
+- [Level 3オーケストレーション](docs/13_ai_orchestration_level3.md)
 - [韓国旅行期間中の自律開発方針](docs/08_korea_trip_dev_policy.md)
 - [受入基準](docs/09_acceptance_criteria.md)
 - [実装開始ゲート](docs/11_implementation_start_gate.md)
