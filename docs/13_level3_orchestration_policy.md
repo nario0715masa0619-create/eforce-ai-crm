@@ -35,3 +35,7 @@ GitHubにはIssue/PR URL、branch、commit、PR本文、CI・レビュー、Bloc
 ## Phase 0.7 最小自動化範囲・安全ゲート
 
 ActionsやBotの前に、自動化範囲、非自動化範囲、安全ゲート、停止条件、人間承認を固定する。正本は [最小自動化範囲](14_level3_minimum_automation_scope.md)。初期候補はラベル、PR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-work、changelog、大差分、CI確認であり、Memory接続、HermesAgent、Bot／Webhook／MCP、本体設計・実装は行わない。
+
+## process-compliance-monitor
+
+AI作業プロセス遵守の専任監視役。Issue／PR／approved-for-work／Handoff／docs／change log／完了条件を確認し、Issueなし、PRなし、main直コミット、未達完了を検出する。project-governorは仕様逸脱・対象外機能、process-compliance-monitorは進め方を監視する。

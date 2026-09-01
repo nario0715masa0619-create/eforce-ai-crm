@@ -69,3 +69,5 @@ AI停止・クレジット切れを前提に、GitHubを正本、Mem0を補助�
 ## Phase 0.7 Level 3最小自動化の実装範囲・安全ゲート
 
 ActionsやBotの前に、何を自動化・停止・人間承認とするか、正本、Mem0非接続時の引継ぎ、exact_human未完成時の原文扱いを確定する。初期対象はGitHub上のPR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-work、changelog、大差分、CI確認に限定する。Actions、Bot／Webhook／MCP、Memory接続、HermesAgent、雛形、DB・画面・本体設計／実装は行わない。
+
+AI作業完了報告と次工程前にはprocess-compliance-monitorがプロセス遵守レビューを行う。
