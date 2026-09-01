@@ -17,3 +17,4 @@
 | 2026-09-01 | Process監視 | Phase 0.8-Bの運用逸脱と時間上限到達後の未コミット状態を受け、Issue／PR／承認／Handoff／docs／完了条件を監視するprocess-compliance-monitorを追加。project-governorとは別役割。本体実装・Actions・Memory接続は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Process監視レビュー対応 | PR #7レビューを受け、recovery neededと実行結果の記録場所を明確化。Issue #6／PR #7は専用スコープで、レビュー担当はproject-governor・security-reviewer・code-reviewer。approved-for-workは未付与のため人間承認または確認後にマージする。Phase 0.8-B残作業は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Issue #5 リカバリー | process-compliance-monitor確認により、Issue #5ブランチにPR #7相当の差分が残存していたためrecovery neededと判定。Issue #5をPhase 0.8-B専用状態へ戻すリカバリーを実施。Phase 0.8-B本体作業およびrepository-safety-checks修正は未再開・未実施。 | 未承認 |
+| 2026-09-01 | Phase 0.8-B スコープ訂正 | Phase 0.8-Bを、業務アプリ本体ではない汎用的な開発前安全ゲートの最小調整として明確化。PR本文、禁止ファイル、secrets／token／key、一般的な個人情報・実データ混入防止のみを対象とし、業務ドメイン固有の検査は行わない。 | 株式会社ルヴィラ 代表 成相政和 |
