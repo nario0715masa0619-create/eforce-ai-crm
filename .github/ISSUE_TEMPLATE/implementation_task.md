@@ -60,3 +60,13 @@ Issueを作業指示の正本とする。
 - Blocking issues:
 - Non-blocking concerns:
 - ChatGPTに判断してほしいこと:
+
+## Failover / Handoff
+
+- Handoff対象になった場合の引き継ぎ可否:
+- 代替担当AI:
+- Mem0共有作業メモリ記録要否:
+- Handoff Summary必須:
+- 引き継ぎ時に最初に読むべきdocs:
+- AI停止時の復元元:
+- 引き継ぎAIが触ってはいけない範囲:

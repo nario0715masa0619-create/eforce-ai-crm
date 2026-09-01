@@ -10,3 +10,4 @@
 | 2026-09-01 | Phase 0.5 レビュー対応 | Claude CodeレビューのPASS with concernsを受け、Node.js、pnpm、CI、環境分離、GitHub保護設定、ダミーデータ方針を明文化。最小アプリ雛形、CI実装、依存関係導入、本体設計・本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.6 方針 | 人間ハブ型コピペ運用を避けるため、GitHub Issue／PR／docs／Actions／ラベルと将来のWebhook・Bot・MCP候補によるLevel 3半自動オーケストレーションを整理。ChatGPT共有を最小サマリー化。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Memory方針 | LuviraMemoryをREAD限定の補助Contextとし、GitHub正本・直接WRITE禁止・HermesAgent将来検証候補を明文化。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
+| 2026-09-01 | Phase 0.6-B Failover | 自律開発でAIクレジット切れ・停止・失敗が起きる前提を追加。GitHubを正本、Mem0を共有作業メモリとして別AIが引き継げるFailover／Handoff方針、Handoff Summaryテンプレート、Failover用プロンプトを追加。業務アプリ本体は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
