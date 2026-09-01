@@ -13,3 +13,5 @@
 | 2026-09-01 | Phase 0.6-B Failover | 自律開発でAIクレジット切れ・停止・失敗が起きる前提を追加。GitHubを正本、Mem0を共有作業メモリとして別AIが引き継げるFailover／Handoff方針、Handoff Summaryテンプレート、Failover用プロンプトを追加。業務アプリ本体は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.7 安全ゲート | Level 3最小自動化の実装範囲・安全ゲートを整理し、docs/14を追加。PR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-workを初期候補とし、Mem0非接続時、exact_human未完成時、人間承認を整理。Actions、Bot、Webhook、MCP、Memory接続、HermesAgent、雛形、本体設計・実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.8 安全チェック | Level 3最小自動化の第一弾としてPR本文、禁止ファイル、secrets、実データ検査をGitHub Actionsで実行する方針を追加。`.github/workflows/repository-safety-checks.yml` と `scripts/ci/repository-safety-checks.sh` を作成。自動ラベル・コメント・マージ・本番・Mem0・Bot/Webhook/MCP・本体実装は未実施。実PRでのAction実行確認は次レビュー対象。 | 株式会社ルヴィラ 代表 成相政和 |
+| 2026-09-01 | 運用逸脱 | Phase 0.8-BでIssue・テストPR未作成のまま一部修正をmainへ直接反映。Issue単位ブランチ・PR方針からの逸脱として記録し、残作業はIssue #5とPRで実施する。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
+| 2026-09-01 | Process監視 | Phase 0.8-Bの運用逸脱と時間上限到達後の未コミット状態を受け、Issue／PR／承認／Handoff／docs／完了条件を監視するprocess-compliance-monitorを追加。project-governorとは別役割。本体実装・Actions・Memory接続は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
