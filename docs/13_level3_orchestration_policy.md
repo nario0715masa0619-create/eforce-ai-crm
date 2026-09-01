@@ -31,3 +31,7 @@ GitHubにはIssue/PR URL、branch、commit、PR本文、CI・レビュー、Bloc
 状態は`normal → ai-paused / ai-credit-exhausted / ai-error → handoff-needed → handoff-accepted → in-progress → ready-for-review`。判断不能は`handoff-needed → blocked`、人間承認待ちは`needs-human-approval`。ラベルは`status:handoff-needed` `status:handoff-accepted` `status:ai-paused` `status:ai-credit-exhausted` `status:ai-error` `risk:handoff` `risk:context-loss`を追加する。
 
 開始時と区切りごとに対象・対象外、検証、変更、完了/未完了、論点、次作業をMem0へ（未利用時はPR/Issueへ）記録する。停止時はIssue/PR、branch、commit、状態、変更、検証、論点、次アクション、触れない範囲をSummaryとして残す。突然停止時はIssue、PR差分、commit、CI、change log、Mem0の順に復元し、不明なら停止する。引継ぎAIは未承認作業、仕様変更、破壊的DB、本番、秘密情報変更、実データ投入、Mem0単独の不可逆操作、承認代行をしない。
+
+## Phase 0.7 最小自動化範囲・安全ゲート
+
+ActionsやBotの前に、自動化範囲、非自動化範囲、安全ゲート、停止条件、人間承認を固定する。正本は [最小自動化範囲](14_level3_minimum_automation_scope.md)。初期候補はラベル、PR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-work、changelog、大差分、CI確認であり、Memory接続、HermesAgent、Bot／Webhook／MCP、本体設計・実装は行わない。
