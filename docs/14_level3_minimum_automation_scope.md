@@ -23,3 +23,5 @@ GitHub ActionsによるPR本文、禁止ファイル、secrets、実データ混
 Phase 0.8-Bは開発環境整備・安全ゲート整備であり、E-force様業務アプリ本体の仕様・設計・実装ではない。repository-safety-checksの対象は、PR本文、禁止ファイル、secrets／token／keyらしき値、一般的な個人情報らしき値（メールアドレス、電話番号、郵便番号、住所）および実データ混入リスクに限定する。明示的なダミーデータは許容する。
 
 業務ドメイン固有の検査は行わない。このチェックは人間レビュー、security-reviewer、code-reviewer、process-compliance-monitorを代替しない。
+
+自己検出回避のため、`scripts/ci/repository-safety-checks.sh` の内容差分は同スクリプトの内容スキャンから除外する。この限界を補うため、同スクリプトを変更するPRではcode-reviewerによる差分確認を必須とする。

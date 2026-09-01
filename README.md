@@ -30,6 +30,8 @@ repository-safety-checksは、PR本文、禁止ファイル、secrets／token／
 
 Phase 0.8-Bはこの汎用安全ゲートを最小調整する作業であり、E-force様業務アプリ本体の仕様・設計・実装ではありません。業務ドメイン固有の検査は行わず、このチェックは人間レビュー、security-reviewer、code-reviewer、process-compliance-monitorを代替しません。
 
+自己検出回避のため、`scripts/ci/repository-safety-checks.sh` の内容差分は同スクリプトの内容スキャンから除外します。この限界を補うため、当該スクリプトを変更するPRではcode-reviewerによる差分確認を必須とします。
+
 ## 重要前提
 
 電話サービス・CTI・通話録音の自動取得、メール自動取込、Googleカレンダー双方向連携、既存予定取込、過去写真整理、大規模Excelクレンジング、スマホ専用アプリは対象外です。顧客情報とファイルはクラウド上で保護し、ログイン、基本権限、暗号化、アクセス制限、バックアップ、更新履歴を前提とします。
