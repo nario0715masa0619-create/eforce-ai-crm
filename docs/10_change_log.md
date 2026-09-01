@@ -12,3 +12,4 @@
 | 2026-09-01 | Memory方針 | LuviraMemoryをREAD限定の補助Contextとし、GitHub正本・直接WRITE禁止・HermesAgent将来検証候補を明文化。本体実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.6-B Failover | 自律開発でAIクレジット切れ・停止・失敗が起きる前提を追加。GitHubを正本、Mem0を共有作業メモリとして別AIが引き継げるFailover／Handoff方針、Handoff Summaryテンプレート、Failover用プロンプトを追加。業務アプリ本体は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
 | 2026-09-01 | Phase 0.7 安全ゲート | Level 3最小自動化の実装範囲・安全ゲートを整理し、docs/14を追加。PR本文、禁止ファイル、secrets、実データ、Handoff、approved-for-workを初期候補とし、Mem0非接続時、exact_human未完成時、人間承認を整理。Actions、Bot、Webhook、MCP、Memory接続、HermesAgent、雛形、本体設計・実装は未実施。 | 株式会社ルヴィラ 代表 成相政和 |
+| 2026-09-01 | Phase 0.8 安全チェック | Level 3最小自動化の第一弾としてPR本文、禁止ファイル、secrets、実データ検査をGitHub Actionsで実行する方針を追加。`.github/workflows/repository-safety-checks.yml` と `scripts/ci/repository-safety-checks.sh` を作成。自動ラベル・コメント・マージ・本番・Mem0・Bot/Webhook/MCP・本体実装は未実施。実PRでのAction実行確認は次レビュー対象。 | 株式会社ルヴィラ 代表 成相政和 |

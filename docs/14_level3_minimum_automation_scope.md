@@ -13,3 +13,7 @@ Issue、範囲、対象外、完了、レビュー、approved-for-work、必要�
 Mem0未接続時はIssue、PR Handoff Summary、Issueコメント、change log、URL/commit/要約で記録し、未記録のまま作業しない。exact_human完成までモデル転記を原文完全保持とせず、契約・法的・正式方針・声明・顧客文書は原文ファイルと差分、人間確認を正としMemory要約を代替にしない。
 
 実装開始、仕様、対象外、本番、DB破壊、secrets rotation、実データ、顧客文書、Knowledge登録、Mem0、HermesAgent、Bot/Webhook/MCP、PRマージは人間承認を必要とする。
+
+## Phase 0.8 実装済み第一弾
+
+GitHub ActionsによるPR本文、禁止ファイル、secrets、実データ混入の最小安全チェックを導入した。今回は検査と失敗までに限定し、自動ラベル、コメント、マージは行わない。誤検知やsecrets／実データ検出は人間判断へ戻し、security-reviewer確認を必要とする。Actionは最小権限で実行し、実際のPR上での実行確認は次レビュー対象とする。
