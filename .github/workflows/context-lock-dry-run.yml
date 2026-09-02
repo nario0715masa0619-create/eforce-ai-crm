@@ -1,0 +1,108 @@
+name: context-lock-dry-run
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Issue containing the Context Lock block to validate"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Validate Context Lock and record result
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = Number(core.getInput('issue_number'));
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const expectedRepository = `${owner}/${repo}`;
+            const failures = [];
+
+            if (!Number.isInteger(issueNumber) || issueNumber <= 0) {
+              failures.push('issue_number must be a positive integer.');
+            }
+
+            const issue = await github.rest.issues.get({ owner, repo, issue_number: issueNumber });
+            const body = issue.data.body || '';
+            const match = body.match(/<!--\s*context-lock\s*\n([\s\S]*?)-->/i);
+            if (!match) {
+              failures.push('Missing <!-- context-lock ... --> block.');
+            }
+
+            const lock = {};
+            if (match) {
+              for (const line of match[1].split('\n')) {
+                const field = line.match(/^\s*([a-z_]+)\s*:\s*(.*?)\s*$/i);
+                if (field) lock[field[1]] = field[2];
+              }
+            }
+
+            const required = [
+              'project_id', 'repository', 'phase', 'issue', 'approval',
+              'allowed_actions', 'current_commit', 'expires_at'
+            ];
+            for (const key of required) {
+              if (!lock[key]) failures.push(`Missing Context Lock field: ${key}.`);
+            }
+
+            if (lock.project_id && lock.project_id !== 'e-force') {
+              failures.push('project_id must be e-force.');
+            }
+            if (lock.repository && lock.repository !== expectedRepository) {
+              failures.push(`repository must be ${expectedRepository}.`);
+            }
+            if (lock.issue && lock.issue !== issue.data.html_url) {
+              failures.push('issue must exactly match the target Issue URL.');
+            }
+            if (lock.approval && !lock.approval.startsWith(`${issue.data.html_url}#issuecomment-`)) {
+              failures.push('approval must point to a comment on the target Issue.');
+            }
+            if (lock.expires_at && Number.isNaN(Date.parse(lock.expires_at))) {
+              failures.push('expires_at must be ISO-8601.');
+            } else if (lock.expires_at && Date.parse(lock.expires_at) <= Date.now()) {
+              failures.push('Context Lock has expired.');
+            }
+
+            const branch = await github.rest.repos.getBranch({ owner, repo, branch: 'main' });
+            if (lock.current_commit && lock.current_commit !== branch.data.commit.sha) {
+              failures.push('current_commit does not match main. Re-verify and issue a new Context Lock.');
+            }
+
+            const allowed = (lock.allowed_actions || '').split(',').map(value => value.trim()).filter(Boolean);
+            const permitted = new Set(['read', 'plan', 'comment']);
+            if (!allowed.length || allowed.some(action => !permitted.has(action))) {
+              failures.push('allowed_actions may contain only read, plan, comment in this dry run.');
+            }
+
+            const githubRepositories = [...body.matchAll(/github\.com\/([^/\s)#]+)\/([^/\s)#]+)/gi)]
+              .map(([, bodyOwner, bodyRepo]) => `${bodyOwner}/${bodyRepo}`);
+            if (githubRepositories.some(candidate => candidate !== expectedRepository)) {
+              failures.push('Cross-project GitHub repository reference detected.');
+            }
+
+            const verdict = failures.length ? 'BLOCKED' : 'PASS';
+            const details = failures.length
+              ? failures.map(item => `- ${item}`).join('\n')
+              : '- Context Lock matches this repository, Issue, main commit, approval URL, expiry, and dry-run permissions.';
+            const comment = [
+              '## Context Lock Dry-Run Result',
+              '',
+              `Verdict: **${verdict}**`,
+              '',
+              details,
+              '',
+              'This workflow did not start an AI, create a branch or PR, change repository settings, access secrets, or modify application code.'
+            ].join('\n');
+            await github.rest.issues.createComment({ owner, repo, issue_number: issueNumber, body: comment });
+
+            if (failures.length) core.setFailed(`Context Lock validation failed: ${failures.join(' ')}`);
